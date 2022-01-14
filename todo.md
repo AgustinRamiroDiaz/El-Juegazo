@@ -1,0 +1,8 @@
+- actually losing
+- colors
+- music
+- random obstacle size
+- difficulty
+- comiditas 
+- menu
+- different levels
