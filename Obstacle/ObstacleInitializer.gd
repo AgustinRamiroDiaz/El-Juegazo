@@ -3,9 +3,12 @@ extends KinematicBody
 # speed of the obstacle in meters per second.
 export var speed = 10
 
-var velocity = Vector3.FORWARD * speed
+export var gravity = 75
 
-func _physics_process(_delta):
+var velocity = Vector3.BACK * speed
+
+func _physics_process(delta):
+	velocity.y -= gravity * delta
 	move_and_slide(velocity)
 
 
