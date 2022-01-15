@@ -23,3 +23,15 @@ func _physics_process(delta):
 		
 	velocity.x = direction.x * speed
 	velocity = move_and_slide(velocity, Vector3.UP)
+
+# Emitted when the player was hit by a obstacle
+signal hit
+
+func die():
+	emit_signal("hit")
+	queue_free()
+
+func _on_ObstacleDetector_body_entered(body):
+	
+	die()
+
