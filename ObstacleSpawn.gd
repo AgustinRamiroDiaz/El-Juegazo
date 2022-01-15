@@ -20,3 +20,7 @@ func _on_ObtacleTimer_timeout():
 
 	add_child(obstacle)
 	obstacle.initialize(Vector3(rand_range(-half_width, half_width), 10, -spawn_distance))
+
+
+func _on_Player_hit():
+	 $ObtacleTimer.stop()

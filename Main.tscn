@@ -39,4 +39,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 22.4581 )
 [node name="ObtacleTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="ObtacleTimer" to="." method="_on_ObtacleTimer_timeout"]
