@@ -61,4 +61,5 @@ __meta__ = {
 }
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[connection signal="hit" from="Player" to="UI/ScoreLabel" method="_on_Player_hit"]
 [connection signal="timeout" from="ObtacleTimer" to="." method="_on_ObtacleTimer_timeout"]

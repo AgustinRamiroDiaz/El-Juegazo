@@ -3,25 +3,17 @@ using System;
 
 public class ScoreLabel : Label
 {
-	public var score = 0;
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		
-	}
-
-  // Called every frame. 'delta' is the elapsed time since the previous frame.
-  public override void _Process(float delta)
-  {
-	score += delta;
-	text = "Score: %s" % round(score * 5);
-	
-  }
-
+    public float score = 0;
+    bool PlayerLost = false;
+    public override void _Process(float delta)
+    {
+        if (PlayerLost) { return; }
+        score += delta;
+        Text = $"Score: {Math.Round(score * 5)}";
+    }
+    private void _on_Player_hit()
+    {
+        PlayerLost = true;
+    }
 }
-//
-//
-//func _on_Player_hit():
-//	# _process = x
-//	pass
+
