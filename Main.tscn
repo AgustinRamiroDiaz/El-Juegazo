@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ObstacleSpawn.gd" type="Script" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Obstacle/Obstacle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ScoreLabel.cs" type="Script" id=4]
+[ext_resource path="res://RetryButton.gd" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -43,22 +44,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 22.4581 )
 autostart = true
 
 [node name="UI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScoreLabel" type="Label" parent="UI"]
 margin_right = 165.0
 margin_bottom = 151.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.180392, 0.152941, 0.152941, 1 )
 text = "Score: 0"
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Retry" type="ColorRect" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.427451 )
+
+[node name="Button" type="Button" parent="UI/Retry"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -109.0
+margin_top = -48.5
+margin_right = 109.0
+margin_bottom = 48.5
+text = "Retry"
+script = ExtResource( 5 )
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="hit" from="Player" to="UI/ScoreLabel" method="_on_Player_hit"]

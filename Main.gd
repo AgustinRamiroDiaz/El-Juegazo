@@ -23,4 +23,6 @@ func _on_ObtacleTimer_timeout():
 
 
 func _on_Player_hit():
-	 $ObtacleTimer.stop()
+	$ObtacleTimer.stop()
+	$UI/Retry.show()
+	$UI/Retry/Button.grab_focus()
