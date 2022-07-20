@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Obstacle/Obstacle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ScoreLabel.cs" type="Script" id=4]
 [ext_resource path="res://RetryButton.gd" type="Script" id=5]
+[ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -72,6 +73,8 @@ margin_right = 109.0
 margin_bottom = 48.5
 text = "Retry"
 script = ExtResource( 5 )
+
+[node name="MusicPlayer" parent="." instance=ExtResource( 6 )]
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="hit" from="Player" to="UI/ScoreLabel" method="_on_Player_hit"]

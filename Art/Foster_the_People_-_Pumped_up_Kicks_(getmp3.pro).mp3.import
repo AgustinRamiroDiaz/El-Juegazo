@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Foster_the_People_-_Pumped_up_Kicks_(getmp3.pro).mp3-d429e876bf90bb6d8c20bd86e81eea42.mp3str"
+
+[deps]
+
+source_file="res://Art/Foster_the_People_-_Pumped_up_Kicks_(getmp3.pro).mp3"
+dest_files=[ "res://.import/Foster_the_People_-_Pumped_up_Kicks_(getmp3.pro).mp3-d429e876bf90bb6d8c20bd86e81eea42.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
