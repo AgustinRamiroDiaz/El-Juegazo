@@ -1,24 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://khmwdi3t7h14"]
 
-[ext_resource path="res://Player/PlayerMovement.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="1"]
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="BoxMesh" id=2]
+[sub_resource type="BoxMesh" id="2"]
 
-[sub_resource type="BoxShape3D" id=3]
+[sub_resource type="BoxShape3D" id="3"]
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource( 2 )
-material/0 = null
+mesh = SubResource("2")
 
 [node name="ObstacleDetector" type="Area3D" parent="."]
 collision_layer = 0
@@ -26,6 +25,6 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleDetector"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [connection signal="body_entered" from="ObstacleDetector" to="." method="_on_ObstacleDetector_body_entered"]

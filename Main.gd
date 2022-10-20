@@ -18,8 +18,8 @@ func _on_ObtacleTimer_timeout():
 #	#obstacle_spawn_location.progress_ratio = randf()
 
 
-	add_child(obstacle)
 	obstacle.initialize(Vector3(randf_range(-half_width, half_width), 10, -spawn_distance))
+	add_child(obstacle)
 
 
 func _on_Player_hit():

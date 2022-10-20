@@ -1,24 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bf0ow8vj5v2bg"]
 
-[ext_resource path="res://Obstacle/ObstacleInitializer.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Obstacle/ObstacleManager.gd" id="1_paoe2"]
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="BoxMesh" id=2]
+[sub_resource type="BoxMesh" id="2"]
 
 [node name="Obstacle" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource( 1 )
+script = ExtResource("1_paoe2")
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource( 2 )
-material/0 = null
+mesh = SubResource("2")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
