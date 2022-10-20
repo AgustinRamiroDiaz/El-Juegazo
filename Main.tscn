@@ -63,6 +63,7 @@ text = "Score: 0"
 script = ExtResource("4_yx42e")
 
 [node name="Retry" type="CanvasGroup" parent="UI"]
+visible = false
 
 [node name="Button" type="Button" parent="UI/Retry"]
 anchors_preset = 8

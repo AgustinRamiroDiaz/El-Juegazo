@@ -24,6 +24,7 @@ func _physics_process(delta):
 	set_velocity(velocity)
 	set_up_direction(Vector3.UP)
 	move_and_slide()
+	velocity
 
 # Emitted when the player was hit by a obstacle
 signal hit
@@ -33,6 +34,4 @@ func die():
 	queue_free()
 
 func _on_ObstacleDetector_body_entered(body):
-	
 	die()
-
