@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7ypwbqshq2uf"]
+[gd_scene load_steps=10 format=3 uid="uid://b7ypwbqshq2uf"]
 
 [ext_resource type="PackedScene" path="res://Player/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Main.gd" id="2"]
 [ext_resource type="PackedScene" path="res://Obstacle/Obstacle.tscn" id="3"]
+[ext_resource type="Script" path="res://ScoreLabel.cs" id="4_yx42e"]
 [ext_resource type="Script" path="res://RetryButton.gd" id="5"]
 [ext_resource type="PackedScene" path="res://MusicPlayer.tscn" id="6"]
 
@@ -59,6 +60,7 @@ offset_bottom = 151.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Score: 0"
+script = ExtResource("4_yx42e")
 
 [node name="Retry" type="CanvasGroup" parent="UI"]
 

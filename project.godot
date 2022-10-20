@@ -12,8 +12,12 @@ config_version=5
 
 config/name="El Juegazo"
 run/main_scene="res://Main.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
+
+[dotnet]
+
+project/assembly_name="El Juegazo"
 
 [input]
 
