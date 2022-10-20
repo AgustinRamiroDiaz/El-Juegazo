@@ -1,8 +1,8 @@
 extends Node
 
-export (PackedScene) var obstacle_scene
-export var spawn_distance = 30
-export var path_width = 20
+@export var obstacle_scene: PackedScene
+@export var spawn_distance = 30
+@export var path_width = 20
 
 var half_width = path_width / 2
 
@@ -12,14 +12,14 @@ func _ready():
 	
 func _on_ObtacleTimer_timeout():
 	# Create a obstacle instance and add it to the scene.
-	var obstacle = obstacle_scene.instance()
+	var obstacle = obstacle_scene.instantiate()
 
 	# And give it a random offset.
-#	#obstacle_spawn_location.unit_offset = randf()
+#	#obstacle_spawn_location.progress_ratio = randf()
 
 
 	add_child(obstacle)
-	obstacle.initialize(Vector3(rand_range(-half_width, half_width), 10, -spawn_distance))
+	obstacle.initialize(Vector3(randf_range(-half_width, half_width), 10, -spawn_distance))
 
 
 func _on_Player_hit():

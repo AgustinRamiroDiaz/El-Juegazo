@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class ScoreLabel : Label
+public partial class ScoreLabel : Label
 {
     public float score = 0;
     bool PlayerLost = false;
@@ -16,4 +16,3 @@ public class ScoreLabel : Label
         PlayerLost = true;
     }
 }
-

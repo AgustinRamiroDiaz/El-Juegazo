@@ -1,10 +1,9 @@
-extends KinematicBody
+extends CharacterBody3D
 
-export var speed = 14
+@export var speed = 14
 
-export var fall_acceleration = 75
+@export var fall_acceleration = 75
 
-var velocity = Vector3.ZERO
 
 func _physics_process(delta):
 	# We create a local variable to store the input direction.
@@ -19,10 +18,12 @@ func _physics_process(delta):
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		# TODO: investigar si hace falta girar al jugador
-		# $Pivot.look_at(translation + direction, Vector3.UP)
+		# $Pivot.look_at(position + direction, Vector3.UP)
 		
 	velocity.x = direction.x * speed
-	velocity = move_and_slide(velocity, Vector3.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
 
 # Emitted when the player was hit by a obstacle
 signal hit
