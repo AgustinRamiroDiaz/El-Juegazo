@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7ypwbqshq2uf"]
+[gd_scene load_steps=11 format=3 uid="uid://b7ypwbqshq2uf"]
 
 [ext_resource type="PackedScene" uid="uid://khmwdi3t7h14" path="res://Player/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Main.gd" id="2"]
@@ -13,9 +13,17 @@
 
 [sub_resource type="Theme" id="4"]
 
-[node name="Main" type="Node3D"]
+[sub_resource type="Curve3D" id="Curve3D_7233h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("spawn_location")]
 script = ExtResource("2")
 obstacle_scene = ExtResource("3")
+spawn_location = NodePath("SpawnPath/SpawnLocation")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(14.993, 0, 0, 0, 1, 0, 0, 0, 100, 0, -1, -30)
@@ -51,6 +59,7 @@ grow_vertical = 2
 theme = SubResource("4")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -80,6 +89,13 @@ text = "Retry"
 script = ExtResource("5")
 
 [node name="MusicPlayer" parent="." instance=ExtResource("6")]
+
+[node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+curve = SubResource("Curve3D_7233h")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="hit" from="Player" to="UI/ScoreLabel" method="_on_Player_hit"]

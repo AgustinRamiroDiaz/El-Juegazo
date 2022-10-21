@@ -1,10 +1,7 @@
 extends Node
 
 @export var obstacle_scene: PackedScene
-@export var spawn_distance = 30
-@export var path_width = 20
-
-var half_width = path_width / 2
+@export var spawn_location: PathFollow3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +13,9 @@ func _on_ObtacleTimer_timeout():
 
 	# And give it a random offset.
 #	#obstacle_spawn_location.progress_ratio = randf()
+	spawn_location.unit_offset = randf()
 
-
-	obstacle.initialize(Vector3(randf_range(-half_width, half_width), 10, -spawn_distance))
+	obstacle.initialize(spawn_location.translation)
 	add_child(obstacle)
 
 
