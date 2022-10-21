@@ -11,10 +11,7 @@ func _on_ObtacleTimer_timeout():
 	# Create a obstacle instance and add it to the scene.
 	var obstacle = obstacle_scene.instantiate()
 
-	# And give it a random offset.
-#	#obstacle_spawn_location.progress_ratio = randf()
-	spawn_location.unit_offset = randf()
-
+	# TODO: fix this
 	obstacle.initialize(spawn_location.translation)
 	add_child(obstacle)
 
