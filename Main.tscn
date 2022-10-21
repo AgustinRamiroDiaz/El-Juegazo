@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7ypwbqshq2uf"]
+[gd_scene load_steps=13 format=3 uid="uid://b7ypwbqshq2uf"]
 
 [ext_resource type="PackedScene" uid="uid://khmwdi3t7h14" path="res://Player/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Main.gd" id="2"]
@@ -12,6 +12,19 @@
 [sub_resource type="BoxMesh" id="2"]
 
 [sub_resource type="Theme" id="4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_grc8s"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_6mo4u"]
+sky_material = SubResource("ProceduralSkyMaterial_grc8s")
+
+[sub_resource type="Environment" id="Environment_s37aa"]
+background_mode = 2
+sky = SubResource("Sky_6mo4u")
+fog_enabled = true
+fog_light_color = Color(0.203922, 0.721569, 0.913725, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("2")
@@ -51,6 +64,7 @@ grow_vertical = 2
 theme = SubResource("4")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -80,6 +94,9 @@ text = "Retry"
 script = ExtResource("5")
 
 [node name="MusicPlayer" parent="." instance=ExtResource("6")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s37aa")
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="hit" from="Player" to="UI/ScoreLabel" method="_on_Player_hit"]
