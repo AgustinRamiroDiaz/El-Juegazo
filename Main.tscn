@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7ypwbqshq2uf"]
+[gd_scene load_steps=13 format=3 uid="uid://dqh7xamy4g4j8"]
 
 [ext_resource type="PackedScene" uid="uid://khmwdi3t7h14" path="res://Player/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Main.gd" id="2"]
@@ -48,9 +48,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1")]
 speed = 10
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 22.4581)
-
 [node name="ObtacleTimer" type="Timer" parent="."]
 autostart = true
 
@@ -64,7 +61,6 @@ grow_vertical = 2
 theme = SubResource("4")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -97,6 +93,9 @@ script = ExtResource("5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s37aa")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.57827, 15.5832)
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="hit" from="Player" to="UI/ScoreLabel" method="_on_Player_hit"]

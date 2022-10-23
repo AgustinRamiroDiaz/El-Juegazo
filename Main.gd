@@ -1,7 +1,7 @@
 extends Node
 
 @export var obstacle_scene: PackedScene
-@export var spawn_distance = 30
+@export var spawn_distance = 50
 @export var path_width = 20
 
 var half_width = path_width / 2
