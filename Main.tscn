@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqh7xamy4g4j8"]
+[gd_scene load_steps=14 format=3 uid="uid://dqh7xamy4g4j8"]
 
 [ext_resource type="PackedScene" uid="uid://khmwdi3t7h14" path="res://Player/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Main.gd" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ScoreLabel.cs" id="4_yx42e"]
 [ext_resource type="Script" path="res://RetryButton.gd" id="5"]
 [ext_resource type="PackedScene" path="res://MusicPlayer.tscn" id="6"]
+[ext_resource type="Script" path="res://camera_follow.cs" id="7_4l87h"]
 
 [sub_resource type="BoxShape3D" id="1"]
 
@@ -61,6 +62,7 @@ grow_vertical = 2
 theme = SubResource("4")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -94,8 +96,10 @@ script = ExtResource("5")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s37aa")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.57827, 15.5832)
+script = ExtResource("7_4l87h")
+target = NodePath("../Player")
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="hit" from="Player" to="UI/ScoreLabel" method="_on_Player_hit"]
