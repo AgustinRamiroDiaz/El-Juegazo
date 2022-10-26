@@ -11,10 +11,15 @@ public partial class plater_movement : CharacterBody3D
 
     private Vector3 velocity = Vector3.Zero;
 
+	private double leftLimit;
+	private double rightLimit;
+	public override void _Ready() {
+		leftLimit = ground.Transform.origin.x - ground.Scale.x / 2;
+		rightLimit = -leftLimit;
+	}
+
     public override void _PhysicsProcess(double delta)
     {
-		var leftLimit = ground.Transform.origin.x - ground.Scale.x / 2;
-		var rightLimit = -leftLimit;
 
         var direction = Vector3.Zero;
         if (Input.IsActionPressed("move_right") && Transform.origin.x < rightLimit)
