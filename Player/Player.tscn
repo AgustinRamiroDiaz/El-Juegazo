@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://khmwdi3t7h14"]
 
-[ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="1"]
+[ext_resource type="Script" path="res://Player/plater_movement.cs" id="1_70r52"]
 
 [sub_resource type="BoxShape3D" id="1"]
 
@@ -9,7 +9,7 @@
 [sub_resource type="BoxShape3D" id="3"]
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1")
+script = ExtResource("1_70r52")
 
 [node name="Node3D" type="Node3D" parent="."]
 

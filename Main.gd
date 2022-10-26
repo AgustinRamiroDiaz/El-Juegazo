@@ -22,7 +22,8 @@ func _on_ObtacleTimer_timeout():
 	add_child(obstacle)
 
 
-func _on_Player_hit():
+func _on_player_hit():
 	$ObtacleTimer.stop()
 	$UI/Retry.show()
 	$UI/Retry/Button.grab_focus()
+
