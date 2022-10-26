@@ -7,20 +7,26 @@ public partial class plater_movement : CharacterBody3D
 
     [Export] float fall_acceleration = 75;
 
+	[Export] StaticBody3D ground;
+
     private Vector3 velocity = Vector3.Zero;
 
     public override void _PhysicsProcess(double delta)
     {
+		var leftLimit = ground.Transform.origin.x - ground.Scale.x / 2;
+		var rightLimit = -leftLimit;
+
         var direction = Vector3.Zero;
-        if (Input.IsActionPressed("move_right"))
+        if (Input.IsActionPressed("move_right") && Transform.origin.x < rightLimit)
         {
             direction.x += 1;
         }
 
-        if (Input.IsActionPressed("move_left"))
-        {
-            direction.x -= 1;
-        }
+        if (Input.IsActionPressed("move_left") && Transform.origin.x > leftLimit)
+		{
+			direction.x -= 1;
+		}
+
 
 
         if (direction != Vector3.Zero)
