@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class plater_movement : CharacterBody3D
+public partial class player_movement : CharacterBody3D
 {
     [Export] float speed = 14;
 

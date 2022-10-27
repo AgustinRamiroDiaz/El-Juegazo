@@ -21,4 +21,6 @@ mesh = SubResource("2")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_VisibilityNotifier_screen_exited"]

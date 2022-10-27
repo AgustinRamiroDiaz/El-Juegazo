@@ -11,7 +11,6 @@ func _physics_process(delta):
 	current_velocity.y -= gravity * delta
 	set_velocity(current_velocity)
 	move_and_slide()
-	current_velocity
 
 
 func _on_VisibilityNotifier_screen_exited():
