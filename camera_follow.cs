@@ -6,14 +6,21 @@ public partial class camera_follow : Camera3D
 	[Export]
 	Node3D target;
 	[Export]
-	double lerpSpeed = 0.1;
+	float lerpSpeed = 0.1f;
+
+	Vector3 offset;
+
+	public override void _Ready()
+	{
+		offset = GlobalTransform.origin - target.GlobalTransform.origin;
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (target  != null) {
-			var currentOffset =  target.Transform.origin - Transform.origin;
-			this.GlobalTranslate(currentOffset.Project(new Vector3(1, 0, 0)));
+			var newPosition = target.GlobalTransform.origin + offset;
+			Transform = Transform.InterpolateWith(new Transform3D(target.Basis, newPosition), lerpSpeed);
 		}
 	}
 }
