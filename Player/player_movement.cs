@@ -3,61 +3,62 @@ using System;
 
 public partial class player_movement : CharacterBody3D
 {
-    [Export] float speed = 14;
+	[Export] float speed = 14;
 
-    [Export] float fall_acceleration = 75;
+	[Export] float fall_acceleration = 75;
 
 	[Export] StaticBody3D ground;
 
-    private Vector3 velocity = Vector3.Zero;
+	private Vector3 velocity = Vector3.Zero;
 
 	private double leftLimit;
 	private double rightLimit;
-	public override void _Ready() {
-		leftLimit = ground.Transform.origin.x - ground.Scale.x / 2;
+	public override void _Ready()
+	{
+		leftLimit = ground.Transform.Origin.X - ground.Scale.X / 2;
 		rightLimit = -leftLimit;
 	}
 
-    public override void _PhysicsProcess(double delta)
-    {
+	public override void _PhysicsProcess(double delta)
+	{
 
-        var direction = Vector3.Zero;
-        if (Input.IsActionPressed("move_right") && Transform.origin.x < rightLimit)
-        {
-            direction.x += 1;
-        }
-
-        if (Input.IsActionPressed("move_left") && Transform.origin.x > leftLimit)
+		var direction = Vector3.Zero;
+		if (Input.IsActionPressed("move_right") && Transform.Origin.X < rightLimit)
 		{
-			direction.x -= 1;
+			direction.X += 1;
+		}
+
+		if (Input.IsActionPressed("move_left") && Transform.Origin.X > leftLimit)
+		{
+			direction.X -= 1;
 		}
 
 
 
-        if (direction != Vector3.Zero)
-        {
-            direction = direction.Normalized();
-        }
+		if (direction != Vector3.Zero)
+		{
+			direction = direction.Normalized();
+		}
 
-        velocity.x = direction.x * speed;
+		velocity.X = direction.X * speed;
 
-        Velocity = velocity;
-        MoveAndSlide();
+		Velocity = velocity;
+		MoveAndSlide();
 
-    }
-    // signal management
-    [Signal]
-    public delegate void HitEventHandler();
+	}
+	// signal management
+	[Signal]
+	public delegate void HitEventHandler();
 
 
-    private void Die()
-    {
-        EmitSignal(SignalName.Hit); // This name is thightly coupled to the name of the signal :thinkging:
-        QueueFree();
-    }
+	private void Die()
+	{
+		EmitSignal(SignalName.Hit); // This name is thightly coupled to the name of the signal :thinkging:
+		QueueFree();
+	}
 
-    public void _on_ObstacleDetector_body_entered(Node body)
-    {
-        Die();
-    }
+	public void _on_ObstacleDetector_body_entered(Node body)
+	{
+		Die();
+	}
 }

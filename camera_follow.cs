@@ -12,14 +12,15 @@ public partial class camera_follow : Camera3D
 
 	public override void _Ready()
 	{
-		offset = GlobalTransform.origin - target.GlobalTransform.origin;
+		offset = GlobalTransform.Origin - target.GlobalTransform.Origin;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (target  != null) {
-			var newPosition = target.GlobalTransform.origin + offset;
+		if (target != null)
+		{
+			var newPosition = target.GlobalTransform.Origin + offset;
 			Transform = Transform.InterpolateWith(new Transform3D(target.Basis, newPosition), lerpSpeed);
 		}
 	}
